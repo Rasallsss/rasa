@@ -16,7 +16,7 @@ if ( ! function_exists('my_custom_theme_setup')){
 	    * Make theme available for translation.
 	    * Translations can be filed at WordPress.org. See: https://translate.wordpress.org/projects/wp-themes/twentyseventeen
 	    * If you're building a theme based on Twenty Seventeen, use a find and replace
-	    * to change 'twentyseventeen' to the name of your theme in all the template files.
+	    * to change 'my-custom-theme' to the name of your theme in all the template files.
 	    */
 
 	    load_theme_textdomain( 'my-custom-theme ' );
@@ -89,11 +89,91 @@ if ( ! function_exists('my_custom_theme_setup')){
 add_action('after_setup_theme', 'my_custom_theme_setup');
 
 
+/**
+ * Register widget area.
+ *
+ * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
+ */
+function my_custom_theme_widgets_init() {
+	register_sidebar(
+		array(
+			'name'          => __( 'Sidebar', 'my-custom-theme ' ),
+			'id'            => 'default-sidebar',
+			'description'   => __( 'Add widgets here to appear in your sidebar on blog posts and archive pages.', 'my-custom-theme' ),
+			'before_widget' => '<section id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</section>',
+			'before_title'  => '<h2 class="widget-title">',
+			'after_title'   => '</h2>',
+		)
+	);
 
+	register_sidebar(
+		array(
+			'name'          => __( 'Footer 1', 'my-custom-theme	' ),
+			'id'            => 'sidebar-2',
+			'description'   => __( 'Add widgets here to appear in your footer.', 'my-custom-theme' ),
+			'before_widget' => '<section id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</section>',
+			'before_title'  => '<h2 class="widget-title">',
+			'after_title'   => '</h2>',
+		)
+	);
 
+	register_sidebar(
+		array(
+			'name'          => __( 'Footer 2', 'my-custom-theme' ),
+			'id'            => 'sidebar-3',
+			'description'   => __( 'Add widgets here to appear in your footer.', 'my-custom-theme' ),
+			'before_widget' => '<section id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</section>',
+			'before_title'  => '<h2 class="widget-title">',
+			'after_title'   => '</h2>',
+		)
+	);
+}
+add_action( 'widgets_init', 'my_custom_theme_widgets_init' );
+/**
+ * Replaces "[...]" (appended to automatically generated excerpts) with ... and
+ * a 'Continue reading' link.
+ *
+ * @since Twenty Seventeen 1.0
+ *
+ * @param string $link Link to single post/page.
+ * @return string 'Continue reading' link prepended with an ellipsis.
+ */
+function my_custom_theme_excerpt_more( $link ) {
+	if ( is_admin() ) {
+		return $link;
+	}
 
+	$link = sprintf(
+		'<p class="link-more"><a href="%1$s" class="more-link">%2$s</a></p>',
+		esc_url( get_permalink( get_the_ID() ) ),
+		/* translators: %s: Post title. Only visible to screen readers. */
+		sprintf( __( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'my-custom-theme' ), get_the_title( get_the_ID() ) )
+	);
+	return ' &hellip; ' . $link;
+}
+add_filter( 'excerpt_more', 'my_custom_theme_excerpt_more' );
 
+function my_custom_theme_colors_css_wrap() {
+	if ( 'custom' !== get_theme_mod( 'colorscheme' ) && ! is_customize_preview() ) {
+		return;
+	}
 
+	require_once get_parent_theme_file_path( '/inc/color-patterns.php' );
+	$hue = absint( get_theme_mod( 'colorscheme_hue', 250 ) );
+
+	$customize_preview_data_hue = '';
+	if ( is_customize_preview() ) {
+		$customize_preview_data_hue = 'data-hue="' . $hue . '"';
+	}
+	?>
+	<style type="text/css" id="custom-theme-colors" <?php echo $customize_preview_data_hue; ?>>
+		<?php echo twentyseventeen_custom_colors_css(); ?>
+	</style>
+	<?php
+}
 
 
 
