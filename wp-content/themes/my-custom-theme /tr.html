@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="ughfia">
+        <img src="assets/images/big.jpg" alt="">
+        <img src="images/small-1.jpg" alt="">
+        <input type="text">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. In debitis earum molestiae, dolor at repellat voluptate deleniti cumque tempora fugit magnam voluptatum esse doloremque expedita delectus recusandae pariatur, distinctio incidunt!
+    </div>
+    <!-- <img src="<?php echo get_template_directory_uri(); ?>/images/small-4.jpg" alt="img"> -->
+    <!-- <a href="<?php bloginfo('template_url') ?>/templates/travel-page.php"></a> -->
+    <ul>
+        <li><a href="templates/fashion-page.php">fashion</a></li>
+        <li><a href="templates/tech-page.php">tech</a></li>
+        <li><a href=""></a></li>
+        <li><a href=""></a></li>
+    </ul>
+
+    			<!-- <ul class="menu-items">
+				<li >
+					<a class="active" href="<?php get_home_template()?> index.php">
+					<i class="fa-solid fa-house"></i>
+					</a>
+				</li>
+				<li >
+					<a href="<?php bloginfo('template_url') ?>/templates/fashion-page.php">
+					fashion
+					</a>
+				</li>
+				<li>
+					<a href="">
+					tech
+					</a>
+				</li>
+				<li>
+                    <?php
+                    $nav =  get_template_directory_uri('http://localhost/wordpress/wp-content/themes/my-custom-theme%20/templates/fashion-page.php') ;
+                    
+                    ?>
+					<a href="<?php bloginfo('template_url') ?>/templates/lifestyle-page.php">
+					lifestyle
+					</a>
+				</li>
+				<li>
+					<a href="<?php bloginfo('template_url') ?>/templates/travel-page.php">
+					travel
+					</a>
+				</li>
+				<li>
+					<a href="<?php bloginfo('template_url') ?>/singular.php">
+					features
+					</a>
+				</li>
+				<li>
+					<a href="">
+					blog
+					</a>
+				</li>
+				<li>
+					<a href="">
+					tutorials
+					</a>
+				</li>
+				<li>
+					<a href="">
+					by news portal pro
+					</a>
+				</li>
+
+			</ul> -->
+</body>
+</html>
+<div class="center-section">
+	<div class="headding-section">
+			<h1><?php echo $post[0]->post_title;?></h1>
+	</div>
+	<div class="image-section">
+	<?php echo $page; ?>
+		<!-- <dfn>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur, dignissimos ea nesciunt perspiciatis repellat eaque quis sapiente aliquam sed corrupti. Praesentium, sunt. Similique voluptate nulla nam tenetur explicabo consequuntur veritatis! </dfn> -->
+	</div>
+	<div class="content-section">
+		<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime consectetur beatae nisi quam veniam magni repellat enim temporibus commodi, deserunt aut laudantium et, aliquid quae delectus, distinctio error corrupti aperiam ab tempora. Corrupti tempore quas minima ullam voluptas est atque libero. Vel reiciendis sit molestias, sequi, labore quis maiores unde officiis harum, aliquam eaque! Inventore ullam alias laborum autem laudantium! Doloremque voluptas neque, minus ducimus aliquam quaerat nam similique, obcaecati aliquid culpa dolor? Numquam quisquam voluptatem optio nemo aut cumque.</p>
+	</div>
+</div>
+<div class="right-section">
+<div class="headding-section">
+			<h1><?php echo $post[0]->post_title;?></h1>
+	</div>
+	<div class="image-section">
+	<?php echo $page; ?>
+		<!-- <dfn>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur, dignissimos ea nesciunt perspiciatis repellat eaque quis sapiente aliquam sed corrupti. Praesentium, sunt. Similique voluptate nulla nam tenetur explicabo consequuntur veritatis! </dfn> -->
+	</div>
+	<div class="content-section">
+		<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime consectetur beatae nisi quam veniam magni repellat enim temporibus commodi, deserunt aut laudantium et, aliquid quae delectus, distinctio error corrupti aperiam ab tempora. Corrupti tempore quas minima ullam voluptas est atque libero. Vel reiciendis sit molestias, sequi, labore quis maiores unde officiis harum, aliquam eaque! Inventore ullam alias laborum autem laudantium! Doloremque voluptas neque, minus ducimus aliquam quaerat nam similique, obcaecati aliquid culpa dolor? Numquam quisquam voluptatem optio nemo aut cumque.</p>
+	</div>
+
+	if ($post = have_post()){
+		while(have_posts()) {
+	
+		?>  
+		<?php
+	}
+	}
+	?>
+
+
+	<?php
+get_header();
+
+if ( have_posts() ) :
+    while ( have_posts() ) : the_post();
+        the_content();
+    endwhile;
+else :
+    _e( 'Sorry, no posts matched your criteria.', 'textdomain' );
+endif;
+
+get_sidebar();
+// get_footer();
+?>
+<?php echo $post; ?><?php echo $post[2]->post_title;?>
+
+
+
+
+<div class="left-section">
+	<div class="headding-section">
+		<h1><?php echo $post[2]->post_title;?></h1>
+	</div>
+	<div class="image-section">
+		<?php echo $content; ?>
+		<!-- <dfn>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur, dignissimos ea nesciunt perspiciatis repellat eaque quis sapiente aliquam sed corrupti. Praesentium, sunt. Similique voluptate nulla nam tenetur explicabo consequuntur veritatis! </dfn> -->
+	</div>
+	<div class="content-section">
+		<!-- <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime consectetur beatae nisi quam veniam magni repellat enim temporibus commodi, deserunt aut laudantium et, aliquid quae delectus, distinctio error corrupti aperiam ab tempora. Corrupti tempore quas minima ullam voluptas est atque libero. Vel reiciendis sit molestias, sequi, labore quis maiores unde officiis harum, aliquam eaque! Inventore ullam alias laborum autem laudantium! Doloremque voluptas neque, minus ducimus aliquam quaerat nam similique, obcaecati aliquid culpa dolor? Numquam quisquam voluptatem optio nemo aut cumque.</p> -->
+	</div>
+	</div>
+<div class="center-section">
+	<div class="headding-section">
+			<h1><?php echo $post[1]->post_title;?></h1>
+	</div>
+	<div class="image-section">
+	<?php echo $page; ?>
+		<!-- <dfn>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur, dignissimos ea nesciunt perspiciatis repellat eaque quis sapiente aliquam sed corrupti. Praesentium, sunt. Similique voluptate nulla nam tenetur explicabo consequuntur veritatis! </dfn> -->
+	</div>
+	<div class="content-section">
+		<!-- <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime consectetur beatae nisi quam veniam magni repellat enim temporibus commodi, deserunt aut laudantium et, aliquid quae delectus, distinctio error corrupti aperiam ab tempora. Corrupti tempore quas minima ullam voluptas est atque libero. Vel reiciendis sit molestias, sequi, labore quis maiores unde officiis harum, aliquam eaque! Inventore ullam alias laborum autem laudantium! Doloremque voluptas neque, minus ducimus aliquam quaerat nam similique, obcaecati aliquid culpa dolor? Numquam quisquam voluptatem optio nemo aut cumque.</p> -->
+	</div>
+</div>
+<div class="right-section">
+<div class="headding-section">
+			<h1><?php echo $post[0]->post_title;?></h1>
+	</div>
+	<div class="image-section">
+	<?php echo $page; ?>
+		<!-- <dfn>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur, dignissimos ea nesciunt perspiciatis repellat eaque quis sapiente aliquam sed corrupti. Praesentium, sunt. Similique voluptate nulla nam tenetur explicabo consequuntur veritatis! </dfn> -->
+	</div>
+	<div class="content-section">
+		<!-- <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime consectetur beatae nisi quam veniam magni repellat enim temporibus commodi, deserunt aut laudantium et, aliquid quae delectus, distinctio error corrupti aperiam ab tempora. Corrupti tempore quas minima ullam voluptas est atque libero. Vel reiciendis sit molestias, sequi, labore quis maiores unde officiis harum, aliquam eaque! Inventore ullam alias laborum autem laudantium! Doloremque voluptas neque, minus ducimus aliquam quaerat nam similique, obcaecati aliquid culpa dolor? Numquam quisquam voluptatem optio nemo aut cumque.</p> -->
+	</div>
+</div>
