@@ -5,9 +5,7 @@ get_header();
 
     <section class="life-style-section">
         <div class="main-parent">
-
             <?php
-
                 $slug = 'lifestyle';
                 $cat = get_category_by_slug($slug);
                 $catID = $cat->term_id;
@@ -24,7 +22,7 @@ get_header();
 				// $content = $content_post->post_content;
 				// // var_dump($content);
 
-                if ($post > 0){
+                if ( have_posts() ){
                     // echo 'its currect';
                     foreach($post as $eachPost){
                         // var_dump($eachPost);

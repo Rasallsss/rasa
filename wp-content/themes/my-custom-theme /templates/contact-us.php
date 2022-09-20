@@ -2,28 +2,24 @@
 <?php
 get_header();
 ?>
+<section class="contact-us">
+	<div class="main-contact">
+		<div class="headding-section">
+		<h1><?php echo the_title();?></h1>
+		</div>
+	<?php
+if (have_posts()) {
+	while ( have_posts()) :
 
-<?php
-// $temp = 'contact-page';
-// $page = get_page($temp);
-// var_dump($page);
-
-$slug = 'contact';
-$cat = get_category_by_slug($slug);
-$catID = $cat->term_id;
-var_dump($catID);
-
-$argmnd = array ('category' => $catID);
-$post = get_posts($argmnd);
-var_dump($post);
-// echo $post;
-				$content_post = get_post($post->ID);
-				$content = $content_post->post_content;
-				// var_dump($content);
-echo $content->post_content;
-
+		the_post();
+		// the_title();
+		the_content();
+	endwhile;
+}
 ?>
-<h1>oISUHUDGH   OWD</h1>
+	</div>
+	
+</section>
 <?php
 get_footer();
 ?>

@@ -84,6 +84,7 @@ if ( ! function_exists('my_custom_theme_setup')){
 			    'audio',
 		    )
 	    );
+		add_theme_support( 'post-formats',  array ( 'aside', 'gallery', 'quote', 'image', 'video' ) );
     }
 }
 add_action('after_setup_theme', 'my_custom_theme_setup');
