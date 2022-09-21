@@ -7,21 +7,6 @@
 <?php
 	get_header();
 ?>
-
-<?php
-
-
-
-// if (have_posts()) {
-// 	while ( have_posts()) :
-
-// 		the_post();
-// 		the_title();
-// 		the_content();
-// 	endwhile;
-// }
-
-?>
 	<section class="image-section">
 		<div class="main-image-sec">
 			<div class="bg-image">
@@ -343,6 +328,11 @@
 					</div>
 				</div>
 			</div>
+		</div>
+	</section>
+	<section>
+		<div class="gdshafga">
+			<h1>nhjfsuidb</h1>
 		</div>
 	</section>
 <?php

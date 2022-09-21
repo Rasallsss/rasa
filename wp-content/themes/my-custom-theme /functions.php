@@ -2,6 +2,8 @@
     function my_custom_theme_enqueue() {
         wp_enqueue_style( 'my-custom-theme', get_stylesheet_directory_uri().'/style.css');
         wp_enqueue_style('theme-fontawesome', "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css");
+
+		wp_enqueue_script('my-custom-theme-script', get_stylesheet_directory_uri().'/main.js');
         
     }
     add_action( 'wp_enqueue_scripts', 'my_custom_theme_enqueue' );

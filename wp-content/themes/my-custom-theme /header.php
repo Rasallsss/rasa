@@ -48,11 +48,31 @@
 					
 				endif;
 			?>
-
+			<div class="sing-in" onclick="muFunction()">
+				<button type="button">login</button>
+			</div>
+			<div class="login-section">
+				<div class="main-form">
+				<h2>login to your account</h2>
+				<form action="sign-up.php">
+					<label for="">user name</label>
+					<input type="text" name="user"> <br>
+					<label for="">password</label> 
+					<input type="password"> <br>
+					<input type="submit" name="login">
+				  </form>
+				  <div class="sign-up">
+					<a href="http://localhost/wordpress/index.php/sign-up/">sign up</a>
+				  </div>
+				</div>
+				</div>
 			<div class="search-box">
-			<i class="fa-solid fa-magnifying-glass"></i>
+				<i class="fa-solid fa-magnifying-glass"></i>
+			<form action="">
+				<input type="search" name="search" >
+			</form>
+			
 			</div>
 		</nav>
-
 	</header>
 
