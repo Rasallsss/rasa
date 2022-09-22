@@ -15,13 +15,6 @@ get_header();
 
                 $argmnd = array ('category' => $catID);
                 $post = get_posts($argmnd);
-                // var_dump($post);
-                // echo $post;
-
-				// $content_post = get_post($post->ID);
-				// $content = $content_post->post_content;
-				// // var_dump($content);
-
                 if ( have_posts() ){
                     // echo 'its currect';
                     foreach($post as $eachPost){

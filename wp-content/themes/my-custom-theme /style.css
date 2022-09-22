@@ -126,9 +126,13 @@ ul,li{
     background-color: #fff; 
     padding: 40px 70px;
 }
-.login-section .main-form .sign-up a{
+.login-section .main-form .sign-up p{
     font-size: 20px;
     text-transform: capitalize;
+    text-align: center;
+}
+.login-section .main-form .sign-up a{
+    font-weight: 900;
 }
 .login-section form{
     padding: 10px 0;
@@ -493,6 +497,7 @@ footer ul li a{
 }
 .tech-section .main-parent .headding-section h1{
     font-size: 40px;
+    
 }
 .tech-section .main-parent .image-section-1{
     /* padding-top: 40px; */
@@ -594,11 +599,9 @@ footer ul li a{
 }
 .sign-up-section .main{
     margin: auto;
-    width: 75%;
+    width: 90%;
     display: flex;
-    justify-content: space-around;
-
-    align-items: center;
+    justify-content: space-evenly;
 }
 .sign-up-section .main .form-section{
     flex: 0 0 50%;
@@ -609,12 +612,14 @@ footer ul li a{
 .sign-up-section .main .form-section form{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
+    width: 100%;
     
 }
 .sign-up-section .main .form-section form label{
     font-size: 25px;
     text-transform: capitalize;
+    margin: 6px 0;
 }
 .sign-up-section .main .form-section form .main-perent{
     display: flex;
@@ -623,8 +628,17 @@ footer ul li a{
 .sign-up-section .main .form-section form .main-perent .first-name{
     flex: 0 0 48%;
 }
+.sign-up-section .main .form-section form .main-perent .first-name input{
+    width: 100%;
+    display: block;
+   
+}
 .sign-up-section .main .form-section form .main-perent .last-name{
     flex: 0 0 48%;
+}
+.sign-up-section .main .form-section form .main-perent .last-name input{
+    width: 100%;
+    display: block;
 }
 .sign-up-section .main .form-section form input{
     font-size: 20px;
@@ -647,7 +661,7 @@ footer ul li a{
 }
 .sign-up-section .main .image-section{
     flex: 0 0 35%;
-    background-color: aliceblue;
+    height: 330px;
 }
 .sign-up-section .main .image-section img{
     width: 100%;
