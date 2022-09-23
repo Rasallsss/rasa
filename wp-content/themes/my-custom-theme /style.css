@@ -668,3 +668,92 @@ footer ul li a{
     height: 100%;
     object-fit: cover;
 }
+
+
+/*----------------------- news-daily -------------------------- */
+.news-daily-section{
+    margin-top: 5px;
+}
+.news-daily-section .main-perent{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    background-color: rgb(0, 0, 0, .8);
+
+}
+.news-daily-section .main-perent .form{
+    margin: 0 auto 0 auto;
+    width: 35%;
+    padding: 30px 100px;
+    border: 2px solid #fff;
+    border-radius: 20px;
+}
+.news-daily-section .main-perent .form .title{
+    display: flex;
+    padding: 40px 0;
+}
+.news-daily-section .main-perent .form .category{
+    padding: 0 0 40px 0;
+}
+.news-daily-section .main-perent .form .category input{
+    margin-left: 15px;
+}
+.news-daily-section .main-perent .form h3{
+    font-size: 30px;
+    text-transform: capitalize;
+    color: #fff;
+}
+.news-daily-section .main-perent .form input{
+    width: 100%;
+    font-size: 28px;
+    margin-left: 76px;
+    padding: 5px 0 5px 5px;
+    border: 2px solid #000;
+    background-color: rgb(187, 187, 187);
+    outline: none;
+}
+.news-daily-section .main-perent .form .content{
+    display: flex;
+}
+.news-daily-section .main-perent .form .content textarea{
+    border: 2px solid #000;
+    width: 100%;
+    margin-left: 30px;
+    font-size: 18px;
+    padding: 5px 0 0 5px;
+    background-color: rgb(187, 187, 187);
+    outline: none;
+}
+.news-daily-section .buttons-main{
+    display: flex;
+    margin: 50px 0;
+    justify-content: space-around;
+}
+.news-daily-section .upload-image{
+    margin-left: 0px;
+}
+.news-daily-section .upload-image button{
+    background-color: blueviolet;
+    padding: 13px 18px;
+    outline: none;
+    border: none;
+    color: #fff;
+    font-size: 22px;
+    font-weight: 800;
+    text-transform: capitalize;
+    cursor: pointer;
+}
+.news-daily-section .submit-news{
+    margin-left: auto;
+}
+.news-daily-section .submit-news button{
+    background-color: blueviolet;
+    padding: 13px 18px;
+    outline: none;
+    border: none;
+    color: #fff;
+    font-size: 22px;
+    font-weight: 800;
+    text-transform: capitalize;
+    cursor: pointer;
+}

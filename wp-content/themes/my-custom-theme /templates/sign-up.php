@@ -3,12 +3,7 @@
 <?php /* Template Name: sign-up-page*/?>
 <?php
 wp_head();
-
-
-
 ?>
-
-
 <?php
 global $wpdb;
 $result = $wpdb->get_results ( "SELECT * FROM wp_users" );
@@ -20,20 +15,13 @@ foreach ( $result as $print ) {
     $password = $_POST["password"];
 if ($username == $print->user_login){
     echo "
-    
-    <script>alert('already exist')</script>
+    <script>alert('Already exist. please check the user address')</script>
     ";
     ?>
-    <h1 style="text-align: center; text-transform: capitalize;">already exist</h1>
 <?php
 }else{
-    $result = wp_create_user($username, $password, $email); 
-        if(is_wp_error($result)){
-            $error = $result->get_error_message();
-
-        }else{
-            $user = get_user_by('id', $result);
-        }
+    $userdata = wp_create_user($username, $password, $email); 
+    header("location:index.php");
     }  
 }
 ?>
@@ -57,3 +45,4 @@ if ($username == $print->user_login){
         </div>
     </div>
 </section>
+<!-- <h1 style="text-align: center; text-transform: capitalize;">already exist</h1> -->

@@ -54,20 +54,7 @@
 			<div class="login-section">
 				<div class="main-form">
 				<h2>login to your account</h2>
-				<?php 
-				    $username = $_POST["user"];
-					$password = $_POST["password"];
-				$result = wp_create_user($username, $password);
-				if(is_wp_error($result)){
-				  $error = $result->get_error_message();
-				  //handle error here
-				}else{
-				  $user = get_user_by('id', $result);
-				  //handle successful creation here
-				}
-
-					?>
-				<form action="http://localhost/wordpress/wp-login.php" method="POST">
+				<form action="http://localhost/wordpress/wp-login.php " method="POST">
 					<label for="">user name</label>
 					<input type="text" name="user" placeholder="name"> <br>
 					<label for="">password</label> 
@@ -77,7 +64,7 @@
 				  <div class="sign-up">
 					<?php
 						$slug = 'sign-up';
-						$link = get_permalink( get_page_by_path($slug) )
+						$link = get_permalink( get_page_by_path($slug) );
 					?>
 					<p>please
 					<a href="<?php echo $link;?>">sign up</a> your account </p>
@@ -95,3 +82,5 @@
 	</header>
 
 	<!-- http://localhost/wordpress/index.php/sign-up/ -->
+
+	<!-- http://localhost/wordpress/wp-login.php -->
