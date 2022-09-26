@@ -10,14 +10,14 @@
 
 <?php
 
-if (have_posts()) {
-	while ( have_posts()) :
+// if (have_posts()) {
+// 	while ( have_posts()) :
 
-		the_post();
-		// the_title();
-		the_content();
-	endwhile;
-}
+// 		the_post();
+// 		// the_title();
+// 		the_content();
+// 	endwhile;
+// }
 ?>
 	<section class="image-section">
 		<div class="main-image-sec">
@@ -340,11 +340,6 @@ if (have_posts()) {
 					</div>
 				</div>
 			</div>
-		</div>
-	</section>
-	<section>
-		<div class="gdshafga">
-			<h1>nhjfsuidb</h1>
 		</div>
 	</section>
 <?php

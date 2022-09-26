@@ -669,16 +669,17 @@ footer ul li a{
     object-fit: cover;
 }
 
-
 /*----------------------- news-daily -------------------------- */
+
 .news-daily-section{
     margin-top: 5px;
 }
 .news-daily-section .main-perent{
-    height: 100vh;
+    height: auto;
     display: flex;
     align-items: center;
-    background-color: rgb(0, 0, 0, .8);
+    /* background-color: rgb(0, 0, 0, .8); */
+    padding: 50px 0;
 
 }
 .news-daily-section .main-perent .form{
@@ -692,11 +693,27 @@ footer ul li a{
     display: flex;
     padding: 40px 0;
 }
+.news-daily-section .main-perent .form .title .input{
+    height: 100px;
+}
 .news-daily-section .main-perent .form .category{
     padding: 0 0 40px 0;
+    display: flex;
+    justify-content: space-between;
+    
 }
-.news-daily-section .main-perent .form .category input{
-    margin-left: 15px;
+.news-daily-section .main-perent .form .category select{
+    margin-left: 16px;
+    width: 100%;
+    font-size: 20px;
+    /* background-color: rgb(187, 187, 187); */
+    padding: 7px 0 7px 5px;
+    outline: none;
+    border: 2px solid #000;
+    color: brown;
+}
+.news-daily-section .main-perent .form .category select option{
+    font-size: 15px;
 }
 .news-daily-section .main-perent .form h3{
     font-size: 30px;
@@ -706,10 +723,10 @@ footer ul li a{
 .news-daily-section .main-perent .form input{
     width: 100%;
     font-size: 28px;
-    margin-left: 76px;
+    margin-left: 65px;
     padding: 5px 0 5px 5px;
     border: 2px solid #000;
-    background-color: rgb(187, 187, 187);
+    /* background-color: rgb(187, 187, 187); */
     outline: none;
 }
 .news-daily-section .main-perent .form .content{
@@ -717,11 +734,11 @@ footer ul li a{
 }
 .news-daily-section .main-perent .form .content textarea{
     border: 2px solid #000;
-    width: 100%;
+    min-width: 80%;
     margin-left: 30px;
     font-size: 18px;
     padding: 5px 0 0 5px;
-    background-color: rgb(187, 187, 187);
+    /* background-color: rgb(187, 187, 187); */
     outline: none;
 }
 .news-daily-section .buttons-main{
@@ -745,6 +762,7 @@ footer ul li a{
 }
 .news-daily-section .submit-news{
     margin-left: auto;
+    margin-top: 100px;
 }
 .news-daily-section .submit-news button{
     background-color: blueviolet;
@@ -756,4 +774,11 @@ footer ul li a{
     font-weight: 800;
     text-transform: capitalize;
     cursor: pointer;
+    border-bottom: 2px solid #fff;
+    border-left: 2px solid #fff;
+    border-radius: 0 5px 0 5px;
+    transition: .3s ease;
 }
+/* .news-daily-section .submit-news button:hover{
+    border: 2px solid #fff;
+} */

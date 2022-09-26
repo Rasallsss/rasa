@@ -23,15 +23,15 @@ get_header();
                             <div class="flex-section">
                                 <div class="headding-section">
                                     <h1><?php echo $eachPost->post_title?></h1>
+                                </div>
+                                <div class="image-section-1">
+                                    <?php echo $eachPost->post_content; ?>
+                                </div>
                             </div>
-                            <div class="image-section-1">
-                                <?php echo $eachPost->post_content; ?>
-                            </div>
-                        </div>
                         <?php
                     }
                 }
-                ?>
+            ?>
         </div>
     </section>
 <?php
