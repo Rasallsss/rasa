@@ -35,6 +35,7 @@
 				$argmnd = array ('category' => $catID,'numberposts'=> 1,'orderby' => 'post_date','order'=> 'DESC');
 				$post = get_posts($argmnd);
 				// var_dump($post[0]);
+				
 
 				//-------------------------------------- category name ----------------------------------------//
 			
@@ -57,10 +58,15 @@
 
 				$content_post = get_post($post[0]->ID);
 				$content = $content_post->post_content;
-				// var_dump($content);
+				// var_dump($content_post);
+				//-------------------------------------- featured-image ----------------------------------------//
+
+				$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post[0]->ID ), 'single-post-thumbnail' );
+				// echo $image[0];
+
 				?>	
 
-				<?php echo $content; ?>
+				<img src="<?php echo $image[0];?>" alt="">
 
 				<div class="content-section">
 						<div class="btn">
@@ -122,10 +128,12 @@
 						$content_post = get_post($post[0]->ID);
 						$content = $content_post->post_content;
 						// var_dump($content);
+						$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post[0]->ID ), 'single-post-thumbnail' );
+				// echo $image[0];
 					?>
 
 
-							<?php echo $content; ?>
+						<img src="<?php echo $image[0];?>" alt="">
 
 
 					<div class="content-section">
@@ -186,11 +194,13 @@
 					$content_post = get_post($post[0]->ID);
 					$content = $content_post->post_content;
 					// var_dump($content);
+					$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post[0]->ID ), 'single-post-thumbnail' );
 
 					?>
 
 
-						<?php echo $content; ?>
+						
+						<img src="<?php echo $image[0]; ?>" alt="">
 
 
 					<div class="content-section">
@@ -253,11 +263,12 @@
 					$content_post = get_post($post[0]->ID);
 					$content = $content_post->post_content;
 					// var_dump($content);
+					$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post[0]->ID ), 'single-post-thumbnail' );
 
 					?>
 
 
-						<?php echo $content; ?>
+						<img src="<?php echo $image[0]; ?>" alt="">
 
 					<div class="content-section">
 						<div class="btn">
@@ -316,11 +327,11 @@
 					$content_post = get_post($post[0]->ID);
 					$content = $content_post->post_content;
 					// var_dump($content);
+					$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post[0]->ID ), 'single-post-thumbnail' );
 
 					?>
 
-
-						<?php echo $content; ?>
+						<img src="<?php echo $image[0]; ?>" alt="">
 
 					<div class="content-section">
 						<div class="btn">

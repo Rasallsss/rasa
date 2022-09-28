@@ -177,60 +177,50 @@ function my_custom_theme_colors_css_wrap() {
 	</style>
 	<?php
 }
-function aw_custom_meta_boxes( $post_type, $post ) {
-    add_meta_box(
-        'aw-meta-box',
-        __( 'Custom Image' ),
-        'render_aw_meta_box',
-        array('post', 'page'), //post types here
-        'normal',
-        'high'
-    );
-}
-add_action( 'add_meta_boxes', 'aw_custom_meta_boxes', 10, 2 );
- 
-function render_aw_meta_box($post) {
-    $image = get_post_meta($post->ID, 'aw_custom_image', true);
-    ?>
-    <table>
-        <tr>
-            <td><a href="#" class="aw_upload_image_button button button-secondary"><?php _e('Upload Image'); ?></a></td>
-            <td><input type="text" name="aw_custom_image" id="aw_custom_image" value="<?php echo $image; ?>" /></td>
-        </tr>
-    </table>
-    <?php
-}
-function aw_include_script() {
-  
-    if ( ! did_action( 'wp_enqueue_media' ) ) {
-        wp_enqueue_media();
-    }
-  
-    wp_enqueue_script( 'awscript', get_stylesheet_directory_uri() . '/assets/js/awscript.js', array('jquery'), null, false );
-}
-add_action( 'admin_enqueue_scripts', 'aw_include_script' );
-
-
-
-function aw_save_postdata($post_id)
-{
-    if (array_key_exists('aw_custom_image', $_POST)) {
-        update_post_meta(
-            $post_id,
-            'aw_custom_image',
-            $_POST['aw_custom_image']
-        );
-    }
-}
-add_action('save_post', 'aw_save_postdata');
-
-
-
 //------------------------------- img-uplode ------------------------------//
 
 
 add_action( 'wp_enqueue_scripts', 'enqueue_scripts_trigger' );
 function enqueue_scripts_trigger() {
     wp_enqueue_media();
-	wp_enqueue_script( 'my_custom_js', get_stylesheet_directory_uri() . '/assets/js/awscript.js', array('jquery'), null, false );
+	wp_enqueue_script( 'my_custom_js', get_stylesheet_directory_uri() . '/assets/js/IMG-upload-script.js', array('jquery'), null, false );
 }
+function fn_set_featured_image() {
+    if ( isset( $_POST['upload_file'] ) && wp_verify_nonce( $_REQUEST['image_nonce'], 'image_nonce' ) ) {
+        $upload = wp_upload_bits( $_FILES["image"]["name"], null, file_get_contents( $_FILES["image"]["tmp_name"] ) );
+        if ( ! $upload['error'] ) {
+			$cat = $_POST['category'];
+		// var_dump($cat);
+			$cat_ID = get_cat_ID( $cat );
+		   
+			$argmnd = array ('category' => $cat_ID);
+			// var_dump($argmnd);
+			$post = get_posts($argmnd);
+		
+			// var_dump($post);
+			$id = $post[1]->ID;
+			var_dump($id);
+			// var_dump($id);
+            $post_id = $id; //set post id to which you need to add featured image
+            $filename = $upload['file'];
+            $wp_filetype = wp_check_filetype( $filename, null );
+            $attachment = array(
+                'post_mime_type' => $wp_filetype['type'],
+                'post_title' => sanitize_file_name( $filename ),
+                'post_content' => '',
+                'post_status' => 'inherit'
+            );
+            $attachment_id = wp_insert_attachment( $attachment, $filename, $post_id );
+            if ( ! is_wp_error( $attachment_id ) ) {
+                require_once(ABSPATH . 'wp-admin/includes/image.php');
+                $attachment_data = wp_generate_attachment_metadata( $attachment_id, $filename );
+                wp_update_attachment_metadata( $attachment_id, $attachment_data );
+                set_post_thumbnail( $post_id, $attachment_id );
+            }
+        }
+    }
+}
+add_action('init', 'fn_set_featured_image');
+
+
+//------------------------------- end-img-uplode ------------------------------//

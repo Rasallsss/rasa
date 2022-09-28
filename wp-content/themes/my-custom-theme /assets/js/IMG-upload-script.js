@@ -23,9 +23,10 @@
 		$('#upload_image').click(open_custom_media_window);
 
 		function open_custom_media_window() {
+			
 			if (this.window === undefined) {
 				this.window = wp.media({
-					title: 'Insert Image',
+					title: 'Select Image',
 					library: {type: 'image'},
 					multiple: false,
 					button: {text: 'Select'}

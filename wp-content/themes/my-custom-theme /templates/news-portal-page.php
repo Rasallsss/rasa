@@ -12,7 +12,7 @@ get_header();
                 $slug = 'newsPortal';
                 $cat = get_category_by_slug($slug);
                 $catID = $cat->term_id;
-                //-------------------------------------- posts ----------------------------------------//
+//-------------------------------------- posts ----------------------------------------//
                 $argmnd = array ('category' => $catID);
                 $post = get_posts($argmnd);
                 if ( have_posts() ){
