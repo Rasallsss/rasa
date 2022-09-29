@@ -1,6 +1,6 @@
 <?php /* Template Name: lifestyle-page*/?>
 <?php
-get_header();
+    get_header();
 ?>
 
     <section class="life-style-section">

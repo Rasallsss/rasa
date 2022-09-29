@@ -15,35 +15,35 @@
 //     });
 // });
 
-(function( $ ) {
-	'use strict';
+// (function( $ ) {
+// 	'use strict';
 
-	$(function() {
+// 	$(function() {
 		
-		$('#upload_image').click(open_custom_media_window);
+// 		$('#upload_image').click(open_custom_media_window);
 
-		function open_custom_media_window() {
+// 		function open_custom_media_window() {
 			
-			if (this.window === undefined) {
-				this.window = wp.media({
-					title: 'Select Image',
-					library: {type: 'image'},
-					multiple: false,
-					button: {text: 'Select'}
-				});
+// 			if (this.window === undefined) {
+// 				this.window = wp.media({
+// 					title: 'Select Image',
+// 					library: {type: 'image'},
+// 					multiple: false,
+// 					button: {text: 'Select'}
+// 				});
 
-				var self = this;
-				this.window.on('select', function() {
-					var response = self.window.state().get('selection').first().toJSON();
+// 				var self = this;
+// 				this.window.on('select', function() {
+// 					var response = self.window.state().get('selection').first().toJSON();
 
-					$('.wp_attachment_id').val(response.id);
-					$('.image').attr('src', response.sizes.thumbnail.url);
-                    $('.image').show();
-				});
-			}
+// 					$('.wp_attachment_id').val(response.id);
+// 					$('.image').attr('src', response.sizes.thumbnail.url);
+//                     $('.image').show();
+// 				});
+// 			}
 
-			this.window.open();
-			return false;
-		}
-	});
-})( jQuery );
+// 			this.window.open();
+// 			return false;
+// 		}
+// 	});
+// })( jQuery );

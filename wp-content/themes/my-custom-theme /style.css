@@ -744,7 +744,34 @@ footer ul li a{
 .news-daily-section .upload-image{
     margin-left: 0px;
 }
-.news-daily-section .upload-image .input{
+
+.news-daily-section .featured-img .custom-file-input::-webkit-file-upload-button {
+    display: none;
+  }
+  .custom-file-input::before {
+    padding: 14px 22px;
+    background-color: blueviolet;
+    content: 'Select image';
+    display: inline-block;
+    border-top: 1.5px solid #fff;
+    border-right: 1.5px solid #fff;
+    border-radius: 0 5px 0 5px;
+    outline: none;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 22px;
+    color: #fff;
+
+  }
+.news-daily-section .featured-img{
+    display: flex;
+    margin: 40px 0;
+    justify-content: space-between;
+}
+.news-daily-section .featured-img .submit-btn{
+    margin-top: 100px;
+}
+.news-daily-section .featured-img button{
     background-color: blueviolet;
     padding: 14px 22px;
     outline: none;
@@ -758,11 +785,11 @@ footer ul li a{
     border-right: 1.5px solid #fff;
     border-radius: 0 5px 0 5px;
 }
-.news-daily-section .upload-image img{
+/* .news-daily-section .upload-image img{
     width: 100%;
     height: 100px;
     object-fit: cover;
-}
+} */
 .news-daily-section .submit-news{
     margin-left: auto;
     margin-top: 100px;
@@ -785,3 +812,24 @@ footer ul li a{
 /* .news-daily-section .submit-news button:hover{
     border: 2px solid #fff;
 } */
+
+/*----------------------- edit-news -------------------------- */
+.container{
+    margin: 50px 50px 0 50px;
+}
+.container table{
+    width: 100%;
+    text-align: left;
+}
+.container table td{
+    padding: 13px 0;
+    font-size: 18px;
+}
+.container table th{
+    font-size: 30px;
+    text-transform: capitalize;
+    width: calc(100% / 4);
+}
+.container table tr:nth-child(even) {
+    background-color: #D6EEEE;
+}

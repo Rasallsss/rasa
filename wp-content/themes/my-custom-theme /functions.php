@@ -4,7 +4,7 @@
         wp_enqueue_style('theme-fontawesome', "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css");
 
 		wp_enqueue_script('my-custom-theme-script', get_stylesheet_directory_uri().'/main.js');
-        
+		wp_enqueue_media();
     }
     add_action( 'wp_enqueue_scripts', 'my_custom_theme_enqueue' );
 
@@ -180,47 +180,53 @@ function my_custom_theme_colors_css_wrap() {
 //------------------------------- img-uplode ------------------------------//
 
 
-add_action( 'wp_enqueue_scripts', 'enqueue_scripts_trigger' );
-function enqueue_scripts_trigger() {
-    wp_enqueue_media();
-	wp_enqueue_script( 'my_custom_js', get_stylesheet_directory_uri() . '/assets/js/IMG-upload-script.js', array('jquery'), null, false );
-}
-function fn_set_featured_image() {
-    if ( isset( $_POST['upload_file'] ) && wp_verify_nonce( $_REQUEST['image_nonce'], 'image_nonce' ) ) {
-        $upload = wp_upload_bits( $_FILES["image"]["name"], null, file_get_contents( $_FILES["image"]["tmp_name"] ) );
-        if ( ! $upload['error'] ) {
-			$cat = $_POST['category'];
-		// var_dump($cat);
-			$cat_ID = get_cat_ID( $cat );
-		   
-			$argmnd = array ('category' => $cat_ID);
-			// var_dump($argmnd);
-			$post = get_posts($argmnd);
+// add_action( 'wp_enqueue_scripts', 'enqueue_scripts_trigger' );
+// function enqueue_scripts_trigger() {
+//     wp_enqueue_media();
+// 	wp_enqueue_script( 'my_custom_js', get_stylesheet_directory_uri() . '/assets/js/IMG-upload-script.js', array('jquery'), null, false );
+// }
+
+if (isset($_POST['tittle'])) {
+
+	$tittle = $_POST['tittle'];
+	$content = $_POST['content'];
+	$cat = $_POST['category'];
+	// Gather post data.
+	$cat_ID = get_cat_ID( $cat );
+	$my_post = array(
+		'post_title'    => $tittle,
+		'post_content'  => $content,
+		'post_status'   => 'publish',
+		'post_author'   => 1,
+		'post_category' => array($cat_ID)
+	);
+
+	// Insert the post into the database.
+	$post_id = wp_insert_post( $my_post );
+
+	if (!function_exists('wp_generate_attachment_metadata')) {
+		require_once(ABSPATH . 'wp-admin/includes/image.php');
+		require_once(ABSPATH . 'wp-admin/includes/file.php');
+		require_once(ABSPATH . 'wp-admin/includes/media.php');
+	}
+
+	if ($_FILES) {
+		foreach ($_FILES as $file => $array) {
+			if ($_FILES[$file] ['error']) {
+				return "upload error :" . $_FILES[$file] ['error'];
+			}
+			$attach_id = media_handle_upload( $file, $post_id);
+		}
 		
-			// var_dump($post);
-			$id = $post[1]->ID;
-			var_dump($id);
-			// var_dump($id);
-            $post_id = $id; //set post id to which you need to add featured image
-            $filename = $upload['file'];
-            $wp_filetype = wp_check_filetype( $filename, null );
-            $attachment = array(
-                'post_mime_type' => $wp_filetype['type'],
-                'post_title' => sanitize_file_name( $filename ),
-                'post_content' => '',
-                'post_status' => 'inherit'
-            );
-            $attachment_id = wp_insert_attachment( $attachment, $filename, $post_id );
-            if ( ! is_wp_error( $attachment_id ) ) {
-                require_once(ABSPATH . 'wp-admin/includes/image.php');
-                $attachment_data = wp_generate_attachment_metadata( $attachment_id, $filename );
-                wp_update_attachment_metadata( $attachment_id, $attachment_data );
-                set_post_thumbnail( $post_id, $attachment_id );
-            }
-        }
-    }
+	}
+	if( $attach_id > 0 ) {
+		update_post_meta($post_id, '_thumbnail_id', $attach_id);
+		
+	}
+
 }
-add_action('init', 'fn_set_featured_image');
+
+
 
 
 //------------------------------- end-img-uplode ------------------------------//
