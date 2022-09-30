@@ -8,16 +8,14 @@
 <?php
 
     $myposts = get_posts( array(
-        'post_type' => get_post_types(),
         'post_status' => 'publish',
         'numberposts' => -1,
-    ) );
-        // var_dump($myposts);
+        'orderby'     => 'date',
+        'order'       => 'DESC',
 
+    ) );
         $categories = get_categories( $myposts );
         
-        $category_name = get_cat_name( $categories );
-        var_dump( $category_name );
 
 ?>
 
@@ -26,24 +24,43 @@
         <table>
             <thead>
                 <tr>
-                    <th>images</th>
+                    <th >images</th>
                     <th>title</th>
                     <th>calegory</th>
+                    <th>date</th>
                     <th>edit</th>
                 </tr>
             </thead>
             <tbody>
+            <tr>
                 <?php
                     if ( $myposts ){
                         foreach (  $myposts as $post  ) {
+                            $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post ), 'single-post-thumbnail' );
                             ?>
-                            <tr>
-                            <td></td>
-                            <td><?php echo $post->post_title; ?></td>
-                            <td><?php echo $post->post_title; ?></td>
-
-                            </tr>
+                            <td><img src="<?php echo $image[0];?>" alt=""></td>
+                            <td><?php echo $post->post_title; ?></td> 
                             <?php
+                                  $category = get_the_category($post);
+                                  ?>
+                              
+                                  <td><?php echo $category[0]->cat_name; ?></td>
+                            <?php
+                                  $orgDate = $post->post_date;  
+                                  $newDate = date("F d  Y", strtotime($orgDate));
+                            ?>                                  
+                                <td><?php echo $newDate; ?></td>
+                                  <td>
+                                    <?php
+                                        $slug = 'news-daily';
+						                $link = get_permalink( get_page_by_path($slug) );
+                                    ?>
+                                    <a href="<?php echo $link;?>" >
+                                        <i class="fa-solid fa-pen-to-square "></i>
+                                    </a>
+                                  </td>  
+                            </tr>
+                        <?php
                         }
                     }
 
@@ -54,37 +71,3 @@
         </table>
 </div>
 
-<?php
-
-$args = array(
-	'numberposts'	=> 20,
-	'category'		=> 4
-);
-$my_posts = get_posts( $args );
-var_dump($my_posts );
-if( ! empty( $my_posts ) ){
-	$output = '<ul>';
-	foreach ( $my_posts as $p ){
-		$output .= '<li><a href="' . get_permalink( $p->ID ) . '">' 
-		. $p->post_title . '</a></li>';
-	}
-	$output .= '</ul>';
-}
-
-
-?>
-<ul>
-	<?php
-	
-
-
-	if ( $myposts ) {
-		foreach ( $myposts as $post ) : 
-			setup_postdata( $post ); ?>
-			<li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
-		<?php
-		endforeach;
-		wp_reset_postdata();
-	}
-	?>
-</ul>
